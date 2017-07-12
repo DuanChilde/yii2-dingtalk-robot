@@ -8,7 +8,7 @@
         "钉钉",
         "机器人"
     ],
-    "type": "project",
+    "type": "yii2-extension",
     "minimum-stability": "stable",
     "license": "BSD-3-Clause",
     "require": {
