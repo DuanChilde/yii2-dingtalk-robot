@@ -33,13 +33,16 @@ class Robot extends Component
     {
         $httpClient = new Client();
         $response = $httpClient->createRequest()
-            ->setUrl($this->baseUrl)
+            ->setUrl($this->baseUrl . '?access_token=' . $this->accessToken)
             ->setMethod('post')
-            ->setFormat('application/json')
+            ->setFormat(Client::FORMAT_JSON)
             ->setContent(Json::encode($data))
+            ->setHeaders(['Content-type' => 'application/json'])
             ->send();
         if ($response->isOk) {
             $rs = Json::decode($response->content);
+            var_dump($rs);
+            \Yii::$app->end();
             if (isset($rs['errcode']) && $rs['errcode'] == 0) {
                 return true;
             }
